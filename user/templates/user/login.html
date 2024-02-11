@@ -1,0 +1,23 @@
+{% extends 'partials/base.html' %} <!-- the extend of the base -->
+{% block title %} Login Page {% endblock %} <!-- the title will be changed if we go to login -->
+{% load crispy_forms_tags %} <!-- load the crispy, to make the login page looking good -->
+
+{% block content %} <!-- this particular content will  be displayed just for the logout in addition to the extends  -->
+<div class="comtainer">
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <div class="border p-3 offset-md-3 bg-white">
+                <h3>Login page</h3>
+                <hr>
+                <form method="POST">
+                    {% csrf_token %} <!-- for the security -->
+                    {{ form|crispy }}<!-- load the filter crispy -->
+                    <input type="submit" class="btn btn-succes" value="Login"><!-- u must include this in settings LOGIN_REDIRECT_URL='dashboard-index' -->
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
